@@ -32,6 +32,10 @@
 			{
 				"command": "minifycss.minify",
 				"title": "Minify Current CSS File"
+			},
+			{
+				"command": "minifycss.showVersions",
+				"title": "Show cssnano/PostCSS Versions"
 			}
 		],
 		"configuration": {

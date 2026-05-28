@@ -63,6 +63,14 @@ function activate(context) {
 		}
 	}
 
+	// Version info command
+	const versionDisposable = vscode.commands.registerCommand('minifycss.showVersions', () => {
+		const cssnanoVersion = require('cssnano/package.json').version;
+		const postcssVersion = require('postcss/package.json').version;
+		vscode.window.showInformationMessage(`minifyCSS — cssnano v${cssnanoVersion}, postcss v${postcssVersion}`);
+	});
+	context.subscriptions.push(versionDisposable);
+
 	// Manual command
 	const disposable = vscode.commands.registerCommand('minifycss.minify', async () => {
 		const editor = vscode.window.activeTextEditor;
