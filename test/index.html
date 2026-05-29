@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>minifyCSS — Preset Comparison</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 0.875rem;
+      background: #0f0f13;
+      color: #e2e2e8;
+      height: 100dvh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      overflow: hidden;
+    }
+
+    /* ---- Header ---- */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0.6rem 1rem;
+      background: #18181f;
+      border-bottom: 1px solid #2a2a35;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    h1 span {
+      color: #7c7cff;
+    }
+
+    .panel-controls {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex: 1;
+    }
+
+    .panel-control {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .panel-control label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #888;
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    select {
+      flex: 1;
+      padding: 0.35em 2em 0.35em 0.6em;
+      background: #25252f;
+      color: #e2e2e8;
+      border: 1px solid #3a3a48;
+      border-radius: 0.375rem;
+      font: inherit;
+      font-size: 0.8rem;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.6em center;
+    }
+
+    select:focus {
+      outline: 2px solid #7c7cff;
+      outline-offset: 1px;
+    }
+
+    .divider-v {
+      width: 1px;
+      height: 1.5rem;
+      background: #2a2a35;
+    }
+
+    .sync-label {
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      font-size: 0.75rem;
+      color: #888;
+      cursor: pointer;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .sync-label input { cursor: pointer; accent-color: #7c7cff; }
+
+    /* ---- Frames ---- */
+    .frames {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    .frame-wrap {
+      position: relative;
+      overflow: hidden;
+      border-right: 1px solid #2a2a35;
+    }
+
+    .frame-wrap:last-child { border-right: none; }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .frame-label {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: #18181fcc;
+      backdrop-filter: blur(6px);
+      border: 1px solid #3a3a48;
+      border-radius: 0.375rem;
+      padding: 0.2em 0.6em;
+      font-size: 0.7rem;
+      color: #aaa;
+      pointer-events: none;
+      font-family: ui-monospace, monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>minifyCSS <span>preset comparison</span></h1>
+
+    <div class="panel-controls">
+      <div class="panel-control">
+        <label for="left-select">Left</label>
+        <select id="left-select"></select>
+      </div>
+
+      <div class="divider-v"></div>
+
+      <div class="panel-control">
+        <label for="right-select">Right</label>
+        <select id="right-select"></select>
+      </div>
+    </div>
+
+    <label class="sync-label" title="Scroll both panels together">
+      <input type="checkbox" id="sync-scroll" checked>
+      Sync scroll
+    </label>
+  </header>
+
+  <div class="frames">
+    <div class="frame-wrap">
+      <iframe id="left-frame" title="Left panel"></iframe>
+      <span class="frame-label" id="left-label"></span>
+    </div>
+    <div class="frame-wrap">
+      <iframe id="right-frame" title="Right panel"></iframe>
+      <span class="frame-label" id="right-label"></span>
+    </div>
+  </div>
+
+  <script>
+    const stylesheets = [
+      { label: 'test1-default.css',         value: 'css/test1-default.css' },
+      { label: 'test1-default.min.css',     value: 'css/test1-default.min.css' },
+      { label: 'test2-advanced.css',        value: 'css/test2-advanced.css' },
+      { label: 'test2-advanced.min.css',    value: 'css/test2-advanced.min.css' },
+      { label: 'test3-lite.css',            value: 'css/test3-lite.css' },
+      { label: 'test3-lite.min.css',        value: 'css/test3-lite.min.css' },
+    ];
+
+    const leftSelect   = document.getElementById('left-select');
+    const rightSelect  = document.getElementById('right-select');
+    const leftFrame    = document.getElementById('left-frame');
+    const rightFrame   = document.getElementById('right-frame');
+    const leftLabel    = document.getElementById('left-label');
+    const rightLabel   = document.getElementById('right-label');
+    const syncCheckbox = document.getElementById('sync-scroll');
+
+    function populateSelect(el, defaultIndex) {
+      stylesheets.forEach((s, i) => {
+        const opt = document.createElement('option');
+        opt.value = s.value;
+        opt.textContent = s.label;
+        if (i === defaultIndex) opt.selected = true;
+        el.appendChild(opt);
+      });
+    }
+
+    function setFrame(frame, labelEl, cssPath) {
+      frame.src = `preview.html?css=${encodeURIComponent(cssPath)}`;
+      labelEl.textContent = cssPath.split('/').pop();
+      attachScrollSync(frame);
+    }
+
+    populateSelect(leftSelect, 0);
+    populateSelect(rightSelect, 1);
+
+    setFrame(leftFrame,  leftLabel,  leftSelect.value);
+    setFrame(rightFrame, rightLabel, rightSelect.value);
+
+    leftSelect.addEventListener('change',  () => setFrame(leftFrame,  leftLabel,  leftSelect.value));
+    rightSelect.addEventListener('change', () => setFrame(rightFrame, rightLabel, rightSelect.value));
+
+    // ---- Scroll sync ----
+    let syncing = false;
+
+    function syncFrom(source, target) {
+      if (!syncCheckbox.checked || syncing) return;
+      const win = source.contentWindow;
+      if (!win) return;
+      syncing = true;
+      const pct = win.scrollY / (win.document.body.scrollHeight - win.innerHeight || 1);
+      const targetWin = target.contentWindow;
+      if (targetWin) {
+        const maxScroll = targetWin.document.body.scrollHeight - targetWin.innerHeight;
+        targetWin.scrollTo({ top: pct * maxScroll, behavior: 'instant' });
+      }
+      syncing = false;
+    }
+
+    function attachScrollSync(frame) {
+      frame.addEventListener('load', () => {
+        const win = frame.contentWindow;
+        if (!win) return;
+        win.addEventListener('scroll', () => {
+          if (frame === leftFrame)  syncFrom(leftFrame,  rightFrame);
+          if (frame === rightFrame) syncFrom(rightFrame, leftFrame);
+        }, { passive: true });
+      });
+    }
+
+    attachScrollSync(leftFrame);
+    attachScrollSync(rightFrame);
+  </script>
+
+</body>
+</html>

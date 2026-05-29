@@ -2,7 +2,7 @@
 	"name": "minifycss",
 	"displayName": "minifyCSS",
 	"description": "Minify CSS files using the cssnano minification library.\nMinify files with command, with options to automatically minify on save and generate source maps.",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"publisher": "morleydigital",
 	"engines": {
 		"vscode": "^1.102.0"
@@ -71,6 +71,21 @@
 					"type": "boolean",
 					"default": false,
 					"description": "Whether or not to show a an information message on successful minification"
+				},
+				"minifycss.preset": {
+					"type": "string",
+					"enum": [
+						"default",
+						"advanced",
+						"lite"
+					],
+					"markdownEnumDescriptions": [
+						"Default preset — safe optimisations suitable for most projects",
+						"Advanced preset — more aggressive optimisations, may change some CSS behaviour",
+						"Lite preset (cssnano-preset-lite v5, not officially compatible with cssnano v8 — use with caution)"
+					],
+					"default": "default",
+					"description": "The cssnano preset to use when minifying"
 				}
 			}
 		}
@@ -80,8 +95,10 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"postcss": "^8.4.47",
-  		"cssnano": "^6.0.0"
+		"postcss": "8.5.15",
+		"cssnano": "8.0.1",
+		"cssnano-preset-advanced": "8.0.1",
+		"cssnano-preset-lite": "5.0.0"
 	},
 	"repository": {
 		"type": "git",

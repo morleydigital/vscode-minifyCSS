@@ -31,13 +31,14 @@ function activate(context) {
 		const generateSourceMap = config.get('generateSourceMap', false);
 		const successNotificationStatusBar = config.get('successNotificationStatusBar', false);
 		const successNotificationInformationMessage = config.get('successNotificationInformationMessage', false);
+		const preset = config.get('preset', 'default');
 
 		const outName = inputPath.replace(/\.css$/i, '.min.css');
 		const sourceMapName = `${outName}.map`;
 		const fileName = path.basename(inputPath);
 
 		try {
-			const result = await postcss([cssnano({ preset: 'default' })]).process(css, {
+			const result = await postcss([cssnano({ preset })]).process(css, {
 				from: inputPath,
 				to: outName,
 				map: generateSourceMap ? { inline: false, annotation: false } : false,
