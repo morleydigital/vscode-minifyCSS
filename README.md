@@ -57,8 +57,17 @@ This lets you compare the rendered output of the original and minified CSS side-
 ## Packaging
 
 ```bash
-npm install -g @vscode/vsce   # if not already installed
-npm install
+# Install node.js - min 22.11.x required by PostCSS (if not already installed)
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash
+sudo apt install nodejs -y
+
+# Install VSCE (if not already installed)
+sudo npm install -g @vscode/vsce   # if not already installed
+
+# Install dependencies
+sudo npm install
+
+#Package as .vsix
 vsce package
 ```
 
@@ -68,4 +77,7 @@ vsce package
 
 ## Roadmap
 ✅ ~~Add option to select cssnano preset (default, advanced or lite)~~ *(completed in v1.1.0)*
+🔲 Add commands to minify a file using a specific preset
+🔲 Add options to further customise modules included in each preset
+🔲 Improve success message to include minification stats (eg. original file size, minified file size, saving)
 🔲 Bundle using webpack and modify codebase to support vscode.dev
