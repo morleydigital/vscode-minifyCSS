@@ -76,8 +76,8 @@ vsce package
 - 1.1.0 - Added option to select cssnano preset (default, advanced or lite)
 
 ## Roadmap
-✅ ~~Add option to select cssnano preset (default, advanced or lite)~~ *(completed in v1.1.0)*
-🔲 Add commands to minify a file using a specific preset
-🔲 Add options to further customise modules included in each preset
-🔲 Improve success message to include minification stats (eg. original file size, minified file size, saving)
+✅ ~~Add option to select cssnano preset (default, advanced or lite)~~ *(completed in v1.1.0)*  
+🔲 Add commands to minify a file using a specific preset  
+🔲 Add options to further customise modules included in each preset  
+🔲 Improve success message to include minification stats (eg. original file size, minified file size, saving)  
 🔲 Bundle using webpack and modify codebase to support vscode.dev
