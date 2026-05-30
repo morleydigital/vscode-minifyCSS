@@ -1,0 +1,16 @@
+# Project / dev files — not needed in the published extension
+CLAUDE.md
+.gitignore
+.claude/**
+test/**
+*.vsix
+
+# Trim cruft from bundled production dependencies (keeps runtime code)
+node_modules/**/*.md
+node_modules/**/*.ts
+node_modules/**/*.map
+node_modules/**/.github/**
+node_modules/**/test/**
+node_modules/**/tests/**
+node_modules/**/example/**
+node_modules/**/examples/**
