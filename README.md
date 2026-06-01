@@ -30,7 +30,7 @@ Output is written to `<filename>.min.css` in the same directory. `.min.css` file
 
 - **default** — safe optimisations suitable for most projects.
 - **advanced** — more aggressive optimisations; may alter some CSS behaviour (e.g. colour conversion, selector merging).
-- **lite** — minimal optimisations. Note: `cssnano-preset-lite` v5 is not officially compatible with cssnano v8 — use with caution.
+- **lite** — minimal optimisations.
 
 ## Test suite
 

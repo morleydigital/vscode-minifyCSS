@@ -1,11 +1,11 @@
 {
 	"name": "minifycss",
 	"displayName": "minifyCSS",
-	"description": "Minify CSS files using the cssnano minification library via PostCSS.\nMinify files with command or automatically minify on save, with option to generate source maps.",
+	"description": "Minify CSS files using the cssnano minification library via PostCSS. Minify files with a command or automatically on save, with optional source map generation.",
 	"version": "1.1.0",
 	"publisher": "MorleyDigitalUK",
 	"engines": {
-		"vscode": "^1.102.0"
+		"vscode": "^1.75.0"
 	},
 	"categories": [
 		"Other"
@@ -53,7 +53,7 @@
 					],
 					"markdownEnumDescriptions": [
 						"Do not minify file on save",
-						"Minify previously minfied files (files with an existing .min.css file) on save",
+						"Minify previously minified files (files with an existing .min.css file) on save",
 						"Minify all files on save"
 					],
 					"default": "No",
@@ -72,7 +72,7 @@
 				"minifycss.successNotificationInformationMessage": {
 					"type": "boolean",
 					"default": false,
-					"description": "Whether or not to show a an information message on successful minification"
+					"description": "Whether or not to show an information message on successful minification"
 				},
 				"minifycss.preset": {
 					"type": "string",
@@ -91,9 +91,6 @@
 				}
 			}
 		}
-	},
-	"devDependencies": {
-		"vscode": "~1.1.30"
 	},
 	"license": "MIT",
 	"dependencies": {
