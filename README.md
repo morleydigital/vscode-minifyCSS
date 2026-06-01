@@ -74,6 +74,7 @@ vsce package
 ## Changelog
 - 1.0.0 - Initial release
 - 1.1.0 - Added option to select cssnano preset (default, advanced or lite)
+- 1.1.1 - Added dedicated readme for vscode
 
 ## Roadmap
 ✅ ~~Add option to select cssnano preset (default, advanced or lite)~~ *(completed in v1.1.0)*  
