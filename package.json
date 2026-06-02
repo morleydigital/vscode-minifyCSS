@@ -28,7 +28,7 @@
 	},
 	"main": "./extension",
 	"scripts": {
-		"package": "vsce package --readme-path README.vsce.md"
+		"package": "npx --yes @vscode/vsce package --readme-path README.vsce.md"
 	},
 	"contributes": {
 		"commands": [
