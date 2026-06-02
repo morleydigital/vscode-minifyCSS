@@ -61,20 +61,25 @@ This lets you compare the rendered output of the original and minified CSS side-
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash
 sudo apt install nodejs -y
 
-# Install VSCE (if not already installed)
-sudo npm install -g @vscode/vsce   # if not already installed
-
 # Install dependencies
-sudo npm install
+npm install
 
-#Package as .vsix
-vsce package
+# Package as .vsix
+npm run package
 ```
+
+> **Note:** package via `npm run package`, not a bare `vsce package`. The
+> npm script runs `vsce package --readme-path README.vsce.md`, which bundles
+> the Marketplace-specific README (`README.vsce.md`) instead of this GitHub
+> README. A plain `vsce package` would ship the wrong README in the VSIX (and
+> in the VS Code "Details" tab). The script uses `npx`, so a global `vsce`
+> install isn't required.
 
 ## Changelog
 - 1.0.0 - Initial release
 - 1.1.0 - Added option to select cssnano preset (default, advanced or lite)
 - 1.1.1 - Added dedicated readme for vscode
+- 1.1.2 - Ensured the Marketplace README is bundled when packaging (CI + `npm run package`)
 
 ## Roadmap
 ✅ ~~Add option to select cssnano preset (default, advanced or lite)~~ *(completed in v1.1.0)*  

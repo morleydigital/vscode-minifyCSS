@@ -2,7 +2,7 @@
 	"name": "minifycss",
 	"displayName": "minifyCSS",
 	"description": "Minify CSS files using the cssnano minification library via PostCSS. Minify files with a command or automatically on save, with optional source map generation.",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"publisher": "MorleyDigitalUK",
 	"engines": {
 		"vscode": "^1.75.0"
