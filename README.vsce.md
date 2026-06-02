@@ -37,4 +37,4 @@ Output is written to `<filename>.min.css` in the same directory. `.min.css` file
 
 ## Source & issues
 
-Source code, contributing guidelines, and issue tracker are on [GitHub](https://github.com/morleydigital/minifyCSS/).
+Source code, contributing guidelines, and issue tracker are on [GitHub](https://github.com/morleydigital/vscode-minifyCSS/).
