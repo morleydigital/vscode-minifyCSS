@@ -6,8 +6,13 @@
   <title>Preview</title>
   <link id="stylesheet" rel="stylesheet" href="">
   <script>
-    const css = new URLSearchParams(location.search).get('css') || 'css/test1-default.css';
-    document.getElementById('stylesheet').href = css;
+    const params = new URLSearchParams(location.search);
+    const css = params.get('css') || 'css/test1-default.css';
+    // Reuse the cache-busting token from the parent (falling back to now) so the
+    // stylesheet itself is re-fetched, not served stale, after an edit/re-minify.
+    const v = params.get('v') || Date.now();
+    document.getElementById('stylesheet').href =
+      css + (css.includes('?') ? '&' : '?') + 'v=' + v;
   </script>
 </head>
 <body>
@@ -302,19 +307,19 @@
           <tbody>
             <tr>
               <td><code>cssnano</code></td>
-              <td class="font-mono">8.0.1</td>
+              <td class="font-mono">8.0.2</td>
               <td><span class="badge badge--blue">default</span></td>
               <td><span class="badge badge--green">Stable</span></td>
             </tr>
             <tr>
               <td><code>cssnano-preset-advanced</code></td>
-              <td class="font-mono">8.0.1</td>
+              <td class="font-mono">8.0.2</td>
               <td><span class="badge badge--purple">advanced</span></td>
               <td><span class="badge badge--green">Stable</span></td>
             </tr>
             <tr>
               <td><code>cssnano-preset-lite</code></td>
-              <td class="font-mono">5.0.0</td>
+              <td class="font-mono">5.0.1</td>
               <td><span class="badge badge--orange">lite</span></td>
               <td><span class="badge badge--orange">Legacy</span></td>
             </tr>

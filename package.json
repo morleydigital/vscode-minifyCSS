@@ -2,7 +2,7 @@
 	"name": "minifycss",
 	"displayName": "minifyCSS",
 	"description": "Minify CSS files using the cssnano minification library via PostCSS. Minify files with a command or automatically on save, with optional source map generation.",
-	"version": "1.1.2",
+	"version": "1.1.3",
 	"publisher": "MorleyDigitalUK",
 	"engines": {
 		"vscode": "^1.75.0"
@@ -23,8 +23,8 @@
 	],
 	"icon": "icon.png",
 	"galleryBanner": {
-		"color": "#e8e030",
-		"theme": "light"
+		"color": "#379BD6",
+		"theme": "dark"
 	},
 	"main": "./extension",
 	"scripts": {
@@ -87,7 +87,7 @@
 					"markdownEnumDescriptions": [
 						"Default preset — safe optimisations suitable for most projects",
 						"Advanced preset — more aggressive optimisations, may change some CSS behaviour",
-						"Lite preset (cssnano-preset-lite v5, not officially compatible with cssnano v8 — use with caution)"
+						"Lite preset - only removes extra whitespace, linebreaks and comments"
 					],
 					"default": "default",
 					"description": "The cssnano preset to use when minifying"
@@ -98,9 +98,9 @@
 	"license": "MIT",
 	"dependencies": {
 		"postcss": "8.5.15",
-		"cssnano": "8.0.1",
-		"cssnano-preset-advanced": "8.0.1",
-		"cssnano-preset-lite": "5.0.0"
+		"cssnano": "8.0.2",
+		"cssnano-preset-advanced": "8.0.2",
+		"cssnano-preset-lite": "5.0.1"
 	},
 	"repository": {
 		"type": "git",

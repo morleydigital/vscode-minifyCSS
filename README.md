@@ -9,6 +9,10 @@ cssnano is the most widely adopted CSS minification library in the JavaScript ec
 
 Compared to alternatives, cssnano offers a modular preset system that gives you control over how aggressively your CSS is optimised, from safe whitespace removal through to advanced techniques like selector merging and colour conversion. It consistently produces smaller output than older libraries while remaining reliable across modern CSS features.
 
+## Download and install
+
+You can download the packaged extension (.vsix) directly from the [releases page](https://github.com/morleydigital/vscode-minifyCSS/releases), or via the [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=MorleyDigitalUK.minifycss) or [Open VSX](https://open-vsx.org/extension/MorleyDigitalUK/minifycss). Alternatively, see below for instructions for packaging from source.
+
 ## Usage
 
 - **Command palette** → `Minify Current CSS File` — minifies the currently open CSS file immediately.
@@ -80,6 +84,7 @@ npm run package
 - 1.1.0 - Added option to select cssnano preset (default, advanced or lite)
 - 1.1.1 - Added dedicated readme for vscode
 - 1.1.2 - Ensured the Marketplace README is bundled when packaging (CI + `npm run package`)
+- 1.1.3 - Updated cssnano to 8.0.2 (and presets)
 
 ## Roadmap
 ✅ ~~Add option to select cssnano preset (default, advanced or lite)~~ *(completed in v1.1.0)*  

@@ -206,8 +206,13 @@
       });
     }
 
+    let frameLoad = 0;
+
     function setFrame(frame, labelEl, cssPath) {
-      frame.src = `preview.html?css=${encodeURIComponent(cssPath)}`;
+      // Unique token per load busts the cache for both preview.html and (via the
+      // forwarded ?v=) the stylesheet it pulls in, so edits are always reflected.
+      const bust = `${Date.now()}_${++frameLoad}`;
+      frame.src = `preview.html?css=${encodeURIComponent(cssPath)}&v=${bust}`;
       labelEl.textContent = cssPath.split('/').pop();
       attachScrollSync(frame);
     }
