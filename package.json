@@ -98,7 +98,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"postcss": "8.5.25",
-		"cssnano": "8.0.2",
+		"cssnano": "8.0.4",
 		"cssnano-preset-advanced": "8.0.2",
 		"cssnano-preset-lite": "5.0.1"
 	},
