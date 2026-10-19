@@ -2,6 +2,7 @@
 CLAUDE.md
 .gitignore
 .claude/**
+.github/**
 test/**
 *.vsix
 

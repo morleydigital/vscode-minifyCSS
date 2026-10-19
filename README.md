@@ -85,6 +85,7 @@ npm run package
 - 1.1.1 - Added dedicated readme for vscode
 - 1.1.2 - Ensured the Marketplace README is bundled when packaging (CI + `npm run package`)
 - 1.1.3 - Updated cssnano to 8.0.2 (and presets)
+- 1.1.4 - Updated cssnano to 9.9.0 (presets now bundled) and postcss to 8.5.31
 
 ## Roadmap
 ✅ ~~Add option to select cssnano preset (default, advanced or lite)~~ *(completed in v1.1.0)*  

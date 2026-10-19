@@ -5,6 +5,14 @@ All notable changes to the **minifyCSS** extension are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.4]
+
+### Changed
+- Updated cssnano to 9.9.0 and postcss to 8.5.31.
+- Removed the separate `cssnano-preset-advanced` and `cssnano-preset-lite` dependencies — cssnano 9.9.0 bundles all three presets (`default`, `advanced`, `lite`) itself. Install size drops from ~30 transitive packages to a handful.
+- Minimum VS Code version raised to 1.123.0 — the first release whose bundled Node (24.15.0) meets cssnano 9.9.0's requirement (`^22.22.3 || ^24.15.0`).
+- Excluded the repository's `.github/` folder from the packaged VSIX.
+
 ## [1.1.3]
 
 ### Changed
