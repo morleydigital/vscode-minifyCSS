@@ -98,7 +98,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"cssnano": "9.9.0",
-		"postcss": "8.5.31"
+		"postcss": "8.5.32"
 	},
 	"repository": {
 		"type": "git",
